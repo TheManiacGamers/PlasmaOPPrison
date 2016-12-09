@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <main.class>co.plasmanetwork.OPPrison.OPPrison</main.class>
+        <main.class>co.plasmanetwork.OPPrison</main.class>
     </properties>
 
     <build>
