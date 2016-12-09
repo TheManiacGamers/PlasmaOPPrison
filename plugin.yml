@@ -1,0 +1,5 @@
+name: OPPrison
+main: co.plasmanetwork.OPPrison.OPPrison
+version: 1.0.0.0
+author: yeroC
+depend: [Vault]
