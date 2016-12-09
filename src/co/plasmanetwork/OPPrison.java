@@ -3,6 +3,7 @@ package co.plasmanetwork;
 import co.plasmanetwork.managers.ConfigsManager;
 import co.plasmanetwork.managers.StringsManager;
 import co.plasmanetwork.mines.MinesListener;
+import co.plasmanetwork.other.ServerTasks;
 import co.plasmanetwork.other.Tasks;
 import co.plasmanetwork.registers.ListenersRegister;
 import co.plasmanetwork.rewards.CustomRewardsListener;
@@ -39,6 +40,7 @@ public class OPPrison extends JavaPlugin implements Listener {
 //    public static HashMap<UUID, PlayerAchievements> playerAchs = new HashMap<>();
 //    public static HashMap<UUID, String> canUseSEnCD = new HashMap<>();
     public static HashMap<Player, String> pickaxeEffects = new HashMap<>();
+    private ServerTasks sTasks = ServerTasks.getInstance();
     private Tasks tasks = Tasks.getInstance();
     private MinesListener mList = MinesListener.getInstance();
     private CustomRewardsListener customRewards = CustomRewardsListener.getInstance();
@@ -121,9 +123,13 @@ public class OPPrison extends JavaPlugin implements Listener {
             }
         }
         tasks.startTasks();
+        log("Essentials Tasks have been started.");
 //        customRewards.startTasks();
         mList.startTasks();
-        log("Tasks have been started.");
+        log("Mines Listener task has been started.");
+        sTasks.startRestartTasks();
+        log("Auto Restart task has been started.");
+        log("All tasks have been started.");
 
     }
 
