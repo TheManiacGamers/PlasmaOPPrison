@@ -49,6 +49,7 @@ public class OPPrison extends JavaPlugin implements Listener {
     private ListenersRegister listeners = ListenersRegister.getInstance();
     //    private MessagesRegister mreg = MessagesRegister.getInstance();
     public static HashMap<Player, Integer> onlineFor = new HashMap<>();
+    public static HashMap<Player, Integer> sneakingFor = new HashMap<>();
     public static HashMap<Player, Integer> SEnCU = new HashMap<>();
     public static HashMap<Player, Integer> SEnCD = new HashMap<>();
 

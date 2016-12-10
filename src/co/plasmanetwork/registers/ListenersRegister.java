@@ -3,6 +3,7 @@ package co.plasmanetwork.registers;
 import co.plasmanetwork.OPPrison;
 
 import co.plasmanetwork.listeners.*;
+import co.plasmanetwork.listeners.signs.SignInteractListener;
 import co.plasmanetwork.mines.MinesListener;
 import co.plasmanetwork.rewards.CustomRewardsListener;
 import org.bukkit.plugin.PluginManager;
@@ -44,6 +45,8 @@ public class ListenersRegister {
         OPPrison.log("Custom Rewards Listener Class was registered.");
         pm.registerEvents(new MinesListener(plugin), plugin);
         OPPrison.log("Custom Rewards Listener Class was registered.");
+        pm.registerEvents(new SignInteractListener(plugin), plugin);
+        OPPrison.log("Sign Interact Listener Class was registered.");
 
     }
 }

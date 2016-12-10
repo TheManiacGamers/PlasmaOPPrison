@@ -1,6 +1,7 @@
 package co.plasmanetwork;
 
 import co.plasmanetwork.managers.ConfigsManager;
+import co.plasmanetwork.managers.PermissionsManager;
 import co.plasmanetwork.managers.StringsManager;
 import com.sk89q.minecraft.util.commands.ChatColor;
 import com.sk89q.minecraft.util.commands.Command;
@@ -16,6 +17,7 @@ public class MinesCommands {
     OPPrison plugin;
     StringsManager strings = StringsManager.getInstance();
     ConfigsManager configs = ConfigsManager.getInstance();
+    PermissionsManager perms = PermissionsManager.getInstance();
 
     public MinesCommands(OPPrison plugin) {
         this.plugin = plugin;
@@ -26,6 +28,9 @@ public class MinesCommands {
 
         if (sender instanceof Player) {
             Player p = (Player) sender;
+            if (!(p.hasPermission(perms.OPPrison_Commands_Pmp))) {
+                return;
+            }
             if (args.argsLength() == 0) {
                 p.sendMessage(strings.defaultMsgs + ChatColor.RED + "/pmp set <mine>");
                 return;

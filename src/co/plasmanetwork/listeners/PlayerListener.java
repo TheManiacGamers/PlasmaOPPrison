@@ -1,8 +1,10 @@
 package co.plasmanetwork.listeners;
 
+import co.plasmanetwork.managers.PermissionsManager;
 import co.plasmanetwork.other.MinesLocations;
 import co.plasmanetwork.OPPrison;
 import co.plasmanetwork.managers.StringsManager;
+import co.plasmanetwork.utils.ParticleEffect;
 import co.plasmanetwork.utils.Rewards;
 import com.sk89q.minecraft.util.commands.ChatColor;
 import net.milkbowl.vault.economy.Economy;
@@ -38,6 +40,7 @@ public class PlayerListener implements Listener {
 
     Random rand = new Random();
     StringsManager strings = StringsManager.getInstance();
+    PermissionsManager perms = PermissionsManager.getInstance();
     MinesLocations mLoc = MinesLocations.getInstance();
 
     @EventHandler
@@ -54,9 +57,9 @@ public class PlayerListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         e.setJoinMessage(null);
-        if (p.hasPermission("OPPrison.Join")) {
+        if (p.hasPermission(perms.OPPrison_Join)) {
             OPPrison.onlineFor.put(p.getPlayer(), 0);
-            if (p.hasPermission("OPPrison.Join.Notify")) {
+            if (p.hasPermission(perms.OPPrison_Join_Notify)) {
                 Bukkit.broadcastMessage(strings.join + p.getName());
             }
             Bukkit.broadcastMessage(strings.defaultMsgs + ChatColor.GOLD + "Why hello there, " + ChatColor.RED + "" + ChatColor.BOLD + "" + p.getName() + ChatColor.GOLD + "!");
@@ -69,10 +72,10 @@ public class PlayerListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
         e.setQuitMessage(null);
-        if (p.hasPermission("OPPrison.Leave")) {
+        if (p.hasPermission(perms.OPPrison_Leave)) {
             OPPrison.onlineFor.remove(p.getPlayer());
             log(p.getName() + " has quit successfully.");
-            if (p.hasPermission("OPPrison.Leave.Notify")) {
+            if (p.hasPermission(perms.OPPrison_Leave_Notify)) {
                 Bukkit.broadcastMessage(strings.quit + p.getName());
             }
         }
@@ -106,7 +109,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onPlayerBreakBlock(BlockBreakEvent e) {
-        if (e.getPlayer().hasPermission("OPPrison.Effects.Use")) {
+        if (e.getPlayer().hasPermission(perms.OPPrison_Effects_Use)) {
             Player p = e.getPlayer();
             ItemStack luckyPickaxe = new ItemStack(Material.DIAMOND_PICKAXE, 1);
             ItemMeta lpMeta = luckyPickaxe.getItemMeta();
@@ -236,19 +239,13 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onPurPurPickBreak(PlayerItemBreakEvent e) {
-        ItemStack luckyPickaxe = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-        ItemMeta lpMeta = luckyPickaxe.getItemMeta();
-        lpMeta.setDisplayName(ChatColor.GOLD + "Purrptastic Pickaxe");
-        lpMeta.setLore(Arrays.asList(ChatColor.GREEN + "Use this Purrptastic Pickaxe to receive random crazy prizes!", ChatColor.RED + "This can only be used on PurPur blocks."));
-        lpMeta.addEnchant(Enchantment.ARROW_DAMAGE, 100, true);
-        lpMeta.addEnchant(Enchantment.DIG_SPEED, 5, true);
-        lpMeta.addEnchant(Enchantment.DAMAGE_ALL, 15, true);
-        luckyPickaxe.setItemMeta(lpMeta);
-        if (e.getBrokenItem().equals(luckyPickaxe)) {
-            e.getPlayer().getItemInHand().setDurability((short) -10);
+    public void onPlayerToggleFlight(PlayerToggleFlightEvent e) {
+        Player p = e.getPlayer();
+        if (p.hasPermission("Blah.Blah")) {
+            ParticleEffect.SMOKE_NORMAL.display(p.getPlayer().getLocation(), 0, 0, 5, 100, 0, 10);
         }
     }
+
 }
 // this goes in the PlayerJoinEvent. \\
 //            if (OPPrison.messageData.get("joinMessage") == null) {

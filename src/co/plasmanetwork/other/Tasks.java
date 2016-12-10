@@ -1,7 +1,9 @@
 package co.plasmanetwork.other;
 
 import co.plasmanetwork.OPPrison;
+import co.plasmanetwork.managers.PermissionsManager;
 import co.plasmanetwork.managers.StringsManager;
+import co.plasmanetwork.utils.BountifulAPI;
 import com.sk89q.minecraft.util.commands.ChatColor;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -29,6 +31,8 @@ public class Tasks {
     }
 
     Random rand = new Random();
+    String sneakingFor = "1";
+    PermissionsManager perms = PermissionsManager.getInstance();
 
     public static Tasks getInstance() {
         return instance;
@@ -45,6 +49,27 @@ public class Tasks {
             @Override
             public void run() {
                 for (Player p : Bukkit.getOnlinePlayers()) {
+                    if (OPPrison.sneakingFor.get(p.getPlayer()) == null) {
+                        OPPrison.sneakingFor.put(p.getPlayer(), 0);
+                    }
+                    if (p.isSneaking()) {
+                        if (!(p.hasPermission(perms.OPPrison_Sneak_Launch))) {
+                            return;
+                        }
+                        OPPrison.sneakingFor.put(p.getPlayer(), OPPrison.sneakingFor.get(p.getPlayer()) + 1);
+                        if (OPPrison.sneakingFor.get(p.getPlayer()).equals(5)) {
+                            p.setVelocity(p.getLocation().getDirection().multiply(1.5).setY(5));
+                            OPPrison.sneakingFor.remove(p.getPlayer());
+                            OPPrison.sneakingFor.put(p.getPlayer(), 0);
+                        }
+                    }
+                }
+            }
+        }, 20L, 20L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(OPPrison.plugin, new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player p : Bukkit.getOnlinePlayers()) {
                     if (p.getItemInHand().hasItemMeta()) {
                         if (!(p.getItemInHand().hasItemMeta())) {
                             return;
@@ -56,7 +81,7 @@ public class Tasks {
                             return;
                         }
                         if (p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.RED + "Ruby Pickaxe")) {
-                            if (!(p.hasPermission("OPPrison.Ruby.Use"))) {
+                            if (!(p.hasPermission(perms.OPPrison_Ruby_Use))) {
                                 return;
                             }
                             p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20, 2));
@@ -84,7 +109,7 @@ public class Tasks {
             @Override
             public void run() {
                 for (Player p : Bukkit.getOnlinePlayers()) {
-                    if (!(p.hasPermission("OPPrison.Effects.Online"))) {
+                    if (!(p.hasPermission(perms.OPPrison_Effects_Online))) {
                         return;
                     }
                     if (OPPrison.onlineFor.get(p.getPlayer()).equals(3600)) {

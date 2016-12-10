@@ -50,6 +50,7 @@ public class StringsManager {
     public String incorrectCMD = (prefix + ChatColor.RED + "You have executed an incorrect command, please use /plasma help for help!");
     public String noPermissionCMD = (prefix + ChatColor.RED + "You do not have sufficient permissions to execute this command.");
     public String noPermissionCMDFix = (prefix + ChatColor.RED + "You require this permission: " + ChatColor.DARK_RED);
+    public String noPermissionPlace = (prefix + ChatColor.RED + "You do not have permission to do this.");
     public String needToBePlayerCMD = (prefix + ChatColor.RED + "You need to be a player to execute this command, sorry for any inconvenience.");
     public String incorrectArgs = (prefix + ChatColor.RED + "You have used incorrect arguments, please check the command and try again.");
     public String incorrectArgsFix = (prefix + ChatColor.RED + "Here are the valid arguments for this command: " + ChatColor.DARK_RED + "");

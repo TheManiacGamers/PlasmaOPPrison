@@ -1,6 +1,7 @@
 package co.plasmanetwork;
 
 import co.plasmanetwork.managers.ConfigsManager;
+import co.plasmanetwork.managers.PermissionsManager;
 import co.plasmanetwork.managers.StringsManager;
 import co.plasmanetwork.other.MinesLocations;
 import com.sk89q.minecraft.util.commands.ChatColor;
@@ -23,6 +24,7 @@ public class Commands {
     ConfigsManager configs = ConfigsManager.getInstance();
     MinesLocations mines = MinesLocations.getInstance();
     OPPrison plugin;
+    PermissionsManager perms = PermissionsManager.getInstance();
 
     public Commands(OPPrison plugin) {
         this.plugin = plugin;
@@ -32,12 +34,12 @@ public class Commands {
     public void onPrison(CommandContext args, CommandSender sender) {
         if (sender instanceof Player) {
             Player p = ((Player) sender).getPlayer();
-            if (!(p.hasPermission("OPPrison.Commands"))) {
+            if (!(p.hasPermission(perms.OPPrison_Commands))) {
                 p.sendMessage(strings.noPermissionCMD);
                 return;
             }
             if (args.argsLength() == 0) {
-                if (!(p.hasPermission("OPPrison.Commands.Version"))) {
+                if (!(p.hasPermission(perms.OPPrison_Commands_Version))) {
                     p.sendMessage(strings.noPermissionCMD);
                     return;
                 }
@@ -55,7 +57,7 @@ public class Commands {
             if (args.argsLength() == 2) {
                 if (args.getString(0).equalsIgnoreCase("item")) {
                     if (args.getString(1).equalsIgnoreCase("purrptastic-pickaxe")) {
-                        if (!(p.hasPermission("OPPrison.Give.Item.PurrptasticPickaxe"))) {
+                        if (!(p.hasPermission(perms.OPPrison_Give_Item_PurrptasticPickaxe))) {
                             p.sendMessage(strings.defaultMsgs + ChatColor.RED + "You can't give yourself this item.");
                             return;
                         }
@@ -74,7 +76,7 @@ public class Commands {
                         return;
                     }
                     if (args.getString(1).equalsIgnoreCase("ruby")) {
-                        if (!(p.hasPermission("OPPrison.Give.Item.Ruby"))) {
+                        if (!(p.hasPermission(perms.OPPrison_Give_Item_Ruby))) {
                             p.sendMessage(strings.defaultMsgs + ChatColor.RED + "You can't give yourself this item.");
                             return;
                         }
@@ -90,7 +92,7 @@ public class Commands {
                         return;
                     }
                     if (args.getString(1).equalsIgnoreCase("ruby-pickaxe")) {
-                        if (!(p.hasPermission("OPPrison.Give.Item.RubyPickaxe"))) {
+                        if (!(p.hasPermission(perms.OPPrison_Give_Item_RubyPickaxe))) {
                             p.sendMessage(strings.defaultMsgs + ChatColor.RED + "You can't give yourself this item.");
                             return;
                         }

@@ -2,6 +2,7 @@ package co.plasmanetwork.mines;
 
 import co.plasmanetwork.OPPrison;
 import co.plasmanetwork.managers.ConfigsManager;
+import co.plasmanetwork.managers.PermissionsManager;
 import co.plasmanetwork.managers.StringsManager;
 import com.sk89q.minecraft.util.commands.ChatColor;
 import org.bukkit.Bukkit;
@@ -13,6 +14,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.security.Permission;
+
 /**
  * Created by Corey on 6/12/2016.
  *///;import java.io.File;
@@ -23,6 +26,7 @@ public class MinesListener implements Listener {
 
     ConfigsManager configs = ConfigsManager.getInstance();
     StringsManager strings = StringsManager.getInstance();
+    PermissionsManager perms = PermissionsManager.getInstance();
 
     private MinesListener() {
     }
@@ -330,259 +334,259 @@ public class MinesListener implements Listener {
                         @Override
                         public void run() {
                             if (pl.getLocation().distance(a) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.A")) {
+                                if (pl.hasPermission(perms.Mines_A_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(b) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.B")) {
+                                if (pl.hasPermission(perms.Mines_B_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(c) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.C")) {
+                                if (pl.hasPermission(perms.Mines_C_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(d) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.D")) {
+                                if (pl.hasPermission(perms.Mines_D_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(e) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.E")) {
+                                if (pl.hasPermission(perms.Mines_E_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(f) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.F")) {
+                                if (pl.hasPermission(perms.Mines_F_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(g) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.G")) {
+                                if (pl.hasPermission(perms.Mines_G_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(h) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.H")) {
+                                if (pl.hasPermission(perms.Mines_H_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(i) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.I")) {
+                                if (pl.hasPermission(perms.Mines_I_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(j) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.J")) {
+                                if (pl.hasPermission(perms.Mines_J_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(k) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.K")) {
+                                if (pl.hasPermission(perms.Mines_K_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(l) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.L")) {
+                                if (pl.hasPermission(perms.Mines_L_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(m) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.M")) {
+                                if (pl.hasPermission(perms.Mines_M_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(n) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.N")) {
+                                if (pl.hasPermission(perms.Mines_N_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(o) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.O")) {
+                                if (pl.hasPermission(perms.Mines_O_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P")) {
+                                if (pl.hasPermission(perms.Mines_P_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(q) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.Q")) {
+                                if (pl.hasPermission(perms.Mines_Q_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(r) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.R")) {
+                                if (pl.hasPermission(perms.Mines_R_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(s) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.S")) {
+                                if (pl.hasPermission(perms.Mines_S_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(t) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.T")) {
+                                if (pl.hasPermission(perms.Mines_T_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(u) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.U")) {
+                                if (pl.hasPermission(perms.Mines_U_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(v) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.V")) {
+                                if (pl.hasPermission(perms.Mines_V_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(w) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.W")) {
+                                if (pl.hasPermission(perms.Mines_W_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(x) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.X")) {
+                                if (pl.hasPermission(perms.Mines_X_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(y) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.Y")) {
+                                if (pl.hasPermission(perms.Mines_Y_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(z) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.Z")) {
+                                if (pl.hasPermission(perms.Mines_Z_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p1) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P1")) {
+                                if (pl.hasPermission(perms.Mines_P1_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p2) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P2")) {
+                                if (pl.hasPermission(perms.Mines_P2_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p3) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P3")) {
+                                if (pl.hasPermission(perms.Mines_P3_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p4) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P4")) {
+                                if (pl.hasPermission(perms.Mines_P4_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p5) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P5")) {
+                                if (pl.hasPermission(perms.Mines_P5_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p6) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P6")) {
+                                if (pl.hasPermission(perms.Mines_P6_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p7) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P7")) {
+                                if (pl.hasPermission(perms.Mines_P7_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p8) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P8")) {
+                                if (pl.hasPermission(perms.Mines_P8_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p9) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P9")) {
+                                if (pl.hasPermission(perms.Mines_P9_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(p10) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.P10")) {
+                                if (pl.hasPermission(perms.Mines_P10_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 3));
                                     return;
                                 }
                             }
                             if (pl.getLocation().distance(staff) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.Staff")) {
+                                if (pl.hasPermission(perms.Mines_Staff_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 5));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 40, 3));
@@ -590,7 +594,7 @@ public class MinesListener implements Listener {
                                 }
                             }
                             if (pl.getLocation().distance(elite) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.Elite")) {
+                                if (pl.hasPermission(perms.Mines_Elite_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 5));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 40, 3));
@@ -598,7 +602,7 @@ public class MinesListener implements Listener {
                                 }
                             }
                             if (pl.getLocation().distance(overlord) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.Overlord")) {
+                                if (pl.hasPermission(perms.Mines_Overlord_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 5));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 40, 3));
@@ -606,7 +610,7 @@ public class MinesListener implements Listener {
                                 }
                             }
                             if (pl.getLocation().distance(god) < dist) {
-                                if (pl.hasPermission("OPPrison.Effects.Mines.Use.God")) {
+                                if (pl.hasPermission(perms.Mines_God_Use)) {
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 3));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 40, 5));
                                     pl.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 40, 3));
