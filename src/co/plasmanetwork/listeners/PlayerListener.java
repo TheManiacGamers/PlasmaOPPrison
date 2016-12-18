@@ -9,6 +9,7 @@ import co.plasmanetwork.utils.Rewards;
 import com.sk89q.minecraft.util.commands.ChatColor;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -58,14 +59,40 @@ public class PlayerListener implements Listener {
         Player p = e.getPlayer();
         e.setJoinMessage(null);
         if (p.hasPermission(perms.OPPrison_Join)) {
+            OPPrison.canFly.put(p.getPlayer(), "No");
             OPPrison.onlineFor.put(p.getPlayer(), 0);
             if (p.hasPermission(perms.OPPrison_Join_Notify)) {
                 Bukkit.broadcastMessage(strings.join + p.getName());
             }
-            Bukkit.broadcastMessage(strings.defaultMsgs + ChatColor.GOLD + "Why hello there, " + ChatColor.RED + "" + ChatColor.BOLD + "" + p.getName() + ChatColor.GOLD + "!");
+            p.sendMessage(strings.defaultMsgs + ChatColor.GOLD + "Why hello there, " + ChatColor.RED + "" + ChatColor.BOLD + "" + p.getName() + ChatColor.GOLD + "!");
             log(p.getName() + " has joined successfully.");
         }
 
+    }
+
+    @EventHandler
+    public void onPlayerMineBlock(BlockBreakEvent e) {
+        Player p = e.getPlayer();
+        if (e.getBlock().getType().equals(Material.SIGN) || (e.getBlock().getType().equals(Material.SIGN_POST) || (e.getBlock().getType().equals(Material.WALL_SIGN)))) {
+            if (p.getGameMode().equals(GameMode.SURVIVAL)) {
+                p.sendMessage(strings.defaultMsgs + ChatColor.RED + "You are not allowed to break this block.");
+                e.setCancelled(true);
+                return;
+            }
+            if (p.getGameMode().equals(GameMode.CREATIVE)) {
+                if (!(p.hasPermission(perms.OPPrison_Sign_Sell_Break))) {
+                    p.sendMessage(strings.defaultMsgs + ChatColor.RED + "You are not allowed to break this block.");
+                    e.setCancelled(true);
+                }
+            }
+//        } else {
+//            ItemStack air = new ItemStack(Material.AIR, 1);
+//            e.getBlock().getDrops().add(air);
+//            Material mat = e.getBlock().getType();
+//            ItemStack block = new ItemStack(mat, 1);
+//            p.getInventory().addItem(block);
+//            p.updateInventory();
+        }
     }
 
     @EventHandler
@@ -237,15 +264,6 @@ public class PlayerListener implements Listener {
         }
 
     }
-
-    @EventHandler
-    public void onPlayerToggleFlight(PlayerToggleFlightEvent e) {
-        Player p = e.getPlayer();
-        if (p.hasPermission("Blah.Blah")) {
-            ParticleEffect.SMOKE_NORMAL.display(p.getPlayer().getLocation(), 0, 0, 5, 100, 0, 10);
-        }
-    }
-
 }
 // this goes in the PlayerJoinEvent. \\
 //            if (OPPrison.messageData.get("joinMessage") == null) {

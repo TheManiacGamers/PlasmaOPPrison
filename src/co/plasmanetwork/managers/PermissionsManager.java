@@ -21,14 +21,17 @@ public class PermissionsManager {
     public String OPPrison_Effects_Use = "OPPrison.Effects.Use";
 
     // SIGN INTERACT LISTENER CLASS
-    public String OPPrison_Interact_Sign_Sell_Use = "OPPrison.Interact.Sign.Sell.Use";
-    public String OPPrison_Interact_Sign_Buy_Use = "OPPrison.Interact.Sign.Buy.Use";
-    public String OPPrison_Build_Sign_Sell_Create = "OPPrison.Build.Sign.Sell.Create";
-    public String OPPrison_Build_Sign_Buy_Create = "OPPrison.Build.Sign.Buy.Create";
+    public String OPPrison_Sign_Sell_Use = "OPPrison.Sign.Sell.Use";
+    public String OPPrison_Sign_Buy_Use = "OPPrison.Sign.Buy.Use";
+    public String OPPrison_Sign_Sell_Create = "OPPrison.Sign.Sell.Create";
+    public String OPPrison_Sign_Buy_Create = "OPPrison.Sign.Buy.Create";
+    public String OPPrison_Sign_Sell_Break = "OPPrison.Sign.Sell.Break";
+    public String OPPrison_Sign_Buy_Break = "OPPrison.Sign.Buy.Break";
 
     // COMMANDS CLASS
     public String OPPrison_Commands = "OPPrison.Commands";
     public String OPPrison_Commands_Version = "OPPrison.Commands.Version";
+    public String OPPrison_Commands_Sapphire = "OPPrison.Commands.Sapphire";
     public String OPPrison_Give_Item_PurrptasticPickaxe = "OPPrison.Give.Item.PurrptasticPickaxe";
     public String OPPrison_Give_Item_Ruby = "OPPrison.Give.Item.Ruby";
     public String OPPrison_Give_Item_RubyPickaxe = "OPPrison.Give.Item.RubyPickaxe";
@@ -38,8 +41,22 @@ public class PermissionsManager {
 
     // TASKS CLASS
     public String OPPrison_Sneak_Launch = "OPPrison.Sneak.Launch";
-    public String OPPrison_Ruby_Use = "OPPrison.Ruby.Use";
     public String OPPrison_Effects_Online = "OPPrison.Effects.Online";
+
+    // RUBY PICKAXE LISTENER CLASS
+    public String OPPrison_Ruby_Use = "OPPrison.Ruby.Use";
+
+    // CRYSTAL PICKAXE LISTENER CLASS
+    public String OPPrison_Crystal_Use = "OPPrison.Crystal.Use";
+
+    // SAPPHIRE PICKAXE LISTENER CLASS
+    public String OPPrison_Sapphire_Use = "OPPrison.Sapphire.Use";
+
+    // TROLL PICKAXE LISTENER CLASS
+    public String OPPrison_Troll_Use = "OPPrison.Troll.Use";
+
+    // QUARTZ PICKAXE LISTENER CLASS
+    public String OPPrison_Quartz_Use = "OPPrison.Quartz.Use";
 
     // MINESLISTENER CLASS
     public String Mines_A_Use = "OPPrison.Effects.Mines.A.Use";

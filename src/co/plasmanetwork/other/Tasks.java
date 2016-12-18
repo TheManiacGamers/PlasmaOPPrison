@@ -49,6 +49,14 @@ public class Tasks {
             @Override
             public void run() {
                 for (Player p : Bukkit.getOnlinePlayers()) {
+                    p.setFoodLevel(20);
+                }
+            }
+        }, 20L, 20L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(OPPrison.plugin, new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player p : Bukkit.getOnlinePlayers()) {
                     if (OPPrison.sneakingFor.get(p.getPlayer()) == null) {
                         OPPrison.sneakingFor.put(p.getPlayer(), 0);
                     }
@@ -57,36 +65,22 @@ public class Tasks {
                             return;
                         }
                         OPPrison.sneakingFor.put(p.getPlayer(), OPPrison.sneakingFor.get(p.getPlayer()) + 1);
-                        if (OPPrison.sneakingFor.get(p.getPlayer()).equals(5)) {
-                            p.setVelocity(p.getLocation().getDirection().multiply(1.5).setY(5));
-                            OPPrison.sneakingFor.remove(p.getPlayer());
-                            OPPrison.sneakingFor.put(p.getPlayer(), 0);
-                        }
-                    }
-                }
-            }
-        }, 20L, 20L);
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(OPPrison.plugin, new BukkitRunnable() {
-            @Override
-            public void run() {
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    if (p.getItemInHand().hasItemMeta()) {
-                        if (!(p.getItemInHand().hasItemMeta())) {
-                            return;
-                        }
-                        if (!(p.getItemInHand().getItemMeta().hasDisplayName())) {
-                            return;
-                        }
-                        if (!(p.getItemInHand().getType().equals(Material.DIAMOND_PICKAXE))) {
-                            return;
-                        }
-                        if (p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.RED + "Ruby Pickaxe")) {
-                            if (!(p.hasPermission(perms.OPPrison_Ruby_Use))) {
-                                return;
+                        if (OPPrison.sneakingFor.get(p.getPlayer()).equals(10)) {
+                            if (p.getLocation().getWorld().getName().equalsIgnoreCase("mines")) {
+                                if (p.getLocation().getY() <= 14) {
+                                    p.setVelocity(p.getLocation().getDirection().multiply(1.5).setY(5));
+                                    OPPrison.sneakingFor.remove(p.getPlayer());
+                                    OPPrison.sneakingFor.put(p.getPlayer(), 0);
+                                } else {
+                                    p.sendMessage(strings.defaultMsgs + ChatColor.RED + "You are not low enough to use this feature.");
+                                }
+                            } else {
+                                p.sendMessage(strings.defaultMsgs + ChatColor.RED + "You can only use this feature in the mines world.");
                             }
-                            p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20, 2));
                         }
-
+                    } else {
+                        OPPrison.sneakingFor.remove(p.getPlayer());
+                        OPPrison.sneakingFor.put(p.getPlayer(), 0);
                     }
                 }
             }

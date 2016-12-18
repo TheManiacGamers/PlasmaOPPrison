@@ -79,5 +79,5 @@ public class StringsManager {
     public String helpOnJoin1D1 = (ChatColor.GOLD + "We hope you have an awesome time!");
     public String helpOnJoin2 = (ChatColor.GOLD + "Need any help? Do /help or try contacting a staff member!");
     ///////////////////////////////////////////// PLASMA MESSAGES ////////////////////////////////////////////////////////////////////
-
+    public String noItemsToSell = (defaultMsgs + ChatColor.RED + "You do not have any items to sell here.");
 }

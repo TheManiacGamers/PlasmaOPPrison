@@ -3,8 +3,10 @@ package co.plasmanetwork.registers;
 import co.plasmanetwork.OPPrison;
 
 import co.plasmanetwork.listeners.*;
+import co.plasmanetwork.listeners.items.*;
 import co.plasmanetwork.listeners.signs.SignInteractListener;
 import co.plasmanetwork.mines.MinesListener;
+import co.plasmanetwork.rewards.CustomItemListener;
 import co.plasmanetwork.rewards.CustomRewardsListener;
 import org.bukkit.plugin.PluginManager;
 
@@ -44,9 +46,21 @@ public class ListenersRegister {
         pm.registerEvents(new CustomRewardsListener(plugin), plugin);
         OPPrison.log("Custom Rewards Listener Class was registered.");
         pm.registerEvents(new MinesListener(plugin), plugin);
-        OPPrison.log("Custom Rewards Listener Class was registered.");
+        OPPrison.log("Mines Listener Class was registered.");
         pm.registerEvents(new SignInteractListener(plugin), plugin);
         OPPrison.log("Sign Interact Listener Class was registered.");
+        pm.registerEvents(new CustomItemListener(plugin), plugin);
+        OPPrison.log("Custom Item Listener Class was registered.");
+        pm.registerEvents(new CrystalPickaxeListener(plugin), plugin);
+        OPPrison.log("Crystal Pickaxe Listener Class was registered.");
+        pm.registerEvents(new PurrptasticPickaxeListener(plugin), plugin);
+        OPPrison.log("Purrptastic Pickaxe Listener Class was registered.");
+        pm.registerEvents(new RubyPickaxeListener(plugin), plugin);
+        OPPrison.log("Ruby Pickaxe Listener Class was registered.");
+        pm.registerEvents(new SapphirePickaxeListener(plugin), plugin);
+        OPPrison.log("Sapphire Pickaxe Listener Class was registered.");
+        pm.registerEvents(new TrollPickaxeListener(plugin), plugin);
+        OPPrison.log("Troll Pickaxe Listener Class was registered.");
 
     }
 }

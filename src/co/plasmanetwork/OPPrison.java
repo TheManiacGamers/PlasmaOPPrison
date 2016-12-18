@@ -1,5 +1,6 @@
 package co.plasmanetwork;
 
+import co.plasmanetwork.listeners.items.*;
 import co.plasmanetwork.managers.ConfigsManager;
 import co.plasmanetwork.managers.StringsManager;
 import co.plasmanetwork.mines.MinesListener;
@@ -13,6 +14,7 @@ import com.sk89q.minecraft.util.commands.*;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -43,6 +45,13 @@ public class OPPrison extends JavaPlugin implements Listener {
     private ServerTasks sTasks = ServerTasks.getInstance();
     private Tasks tasks = Tasks.getInstance();
     private MinesListener mList = MinesListener.getInstance();
+    // ITEMS
+    private CrystalPickaxeListener cPickList = CrystalPickaxeListener.getInstance();
+    private RubyPickaxeListener rPickList = RubyPickaxeListener.getInstance();
+    private SapphirePickaxeListener sPickList = SapphirePickaxeListener.getInstance();
+    private TrollPickaxeListener tPickList = TrollPickaxeListener.getInstance();
+    private PurrptasticPickaxeListener pPickList = PurrptasticPickaxeListener.getInstance();
+
     private CustomRewardsListener customRewards = CustomRewardsListener.getInstance();
     private ConfigsManager configs = ConfigsManager.getInstance();
     private CoreysAPI api = CoreysAPI.getInstance();
@@ -52,6 +61,8 @@ public class OPPrison extends JavaPlugin implements Listener {
     public static HashMap<Player, Integer> sneakingFor = new HashMap<>();
     public static HashMap<Player, Integer> SEnCU = new HashMap<>();
     public static HashMap<Player, Integer> SEnCD = new HashMap<>();
+    public static HashMap<Player, String> canFly = new HashMap<>();
+    public static HashMap<Player, String> prestigeConfirm = new HashMap<>();
 
     private StringsManager strings = StringsManager.getInstance();
     private CommandsManager<CommandSender> commands;
@@ -97,25 +108,56 @@ public class OPPrison extends JavaPlugin implements Listener {
         }
 //        setupPermissions();
         setupChat();
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(OPPrison.plugin, new Runnable() {
+
+            @Override
+            public void run() {
+                for (World w : Bukkit.getServer().getWorlds()) {
+                    w.setTime(0L);
+                }
+            }
+        }, 0L, 10000L);
 
         onlineFor = new HashMap<>();
         listeners.registerListeners(plugin);
-        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+
+        getServer().
+
+                getMessenger().
+
+                registerOutgoingPluginChannel(this, "BungeeCord");
+
         File dir = new File("PlayerDatabase");
-        if (!dir.exists()) {
+        if (!dir.exists())
+
+        {
             log("Could not find the PlayerDatabase folder, Generating it!");
             dir.mkdir();
-        } else {
+        } else
+
+        {
             log("Found the PlayerDatabase folder!");
         }        // Getting the location of the database, so the rest of this event knows where to actually save everything.
+
         File f = new File(getDataFolder() + File.separator + "messages.yml");
-//        mreg.setup(plugin);
+        //        mreg.setup(plugin);
 //        mreg.saveMsgs();
         FileConfiguration config = YamlConfiguration.loadConfiguration(f);
-        for (String message : config.getConfigurationSection("").getKeys(false)) {
+        for (
+                String message : config.getConfigurationSection("").
+
+                getKeys(false))
+
+        {
             messageData.put(message, config.getString(message));
         }
-        if (!(Bukkit.getServer().getOnlinePlayers().size() == 0)) {
+        if (!(Bukkit.getServer().
+
+                getOnlinePlayers().
+
+                size() == 0))
+
+        {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 OPPrison.SEnCU.put(p.getPlayer(), 0);
                 OPPrison.SEnCD.put(p.getPlayer(), 3660);
@@ -124,12 +166,28 @@ public class OPPrison extends JavaPlugin implements Listener {
             }
         }
         tasks.startTasks();
+
         log("Essentials Tasks have been started.");
 //        customRewards.startTasks();
         mList.startTasks();
+
         log("Mines Listener task has been started.");
         sTasks.startRestartTasks();
+
         log("Auto Restart task has been started.");
+        cPickList.startTasks();
+
+        log("Crystal Pickaxe Tasks has been started");
+        rPickList.startTasks();
+
+        log("Ruby Pickaxe Tasks has been started");
+        tPickList.startTasks();
+
+        log("Troll Pickaxe Tasks has been started");
+        sPickList.startTasks();
+
+        log("Sapphire Pickaxe Tasks has been started");
+
         log("All tasks have been started.");
 
     }

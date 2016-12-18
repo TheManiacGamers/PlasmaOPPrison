@@ -43,10 +43,19 @@ public class MinesListener implements Listener {
     private int dist = 35;
 
     public void startTasks() {
+        for (Player pl : Bukkit.getOnlinePlayers()) {
+            if (!(pl.getLocation().getWorld().getName().equalsIgnoreCase("mines"))) {
+                return;
+            }
+
+        }
         Bukkit.getScheduler().scheduleSyncRepeatingTask(OPPrison.plugin, new BukkitRunnable() {
             @Override
             public void run() {
                 for (final Player pl : Bukkit.getOnlinePlayers()) {
+                    if (!(pl.getLocation().getWorld().getName().equalsIgnoreCase("mines"))) {
+                        return;
+                    }
                     World aworld = Bukkit.getServer().getWorld(configs.getConfig().getString("Mines.A.World"));
                     double ax = configs.getConfig().getDouble("Mines.A.X");
                     double ay = configs.getConfig().getDouble("Mines.A.Y");
@@ -325,7 +334,9 @@ public class MinesListener implements Listener {
                     double staffy = configs.getConfig().getDouble("Mines.Staff.Y");
                     double staffz = configs.getConfig().getDouble("Mines.Staff.Z");
                     final Location staff = new Location(staffworld, staffx, staffy, staffz);
-
+                    if (!(pl.getLocation().getWorld().getName().equalsIgnoreCase("mines"))) {
+                        return;
+                    }
                     if (configs.getConfig().getString("Mines") == null) {
                         Bukkit.broadcastMessage(strings.defaultMsgs + ChatColor.DARK_RED + "MINES NOT FOUND IN CONFIG. PLEASE CHECK THIS ERROR");
                         return;
